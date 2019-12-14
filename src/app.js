@@ -4,15 +4,7 @@ import "./styles/styles.scss";
 import "normalize.css/normalize.css";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
-import { addExpense, removeExpense, editExpense } from "./actions/expenses";
-import {
-  sortByDate,
-  sortByAmount,
-  filterByText,
-  setStartDate,
-  setEndDate
-} from "./actions/filters";
-import getVisibleExpenses from "./store/selectors/expenses";
+import { addExpense } from "./actions/expenses";
 import { Provider } from "react-redux";
 
 const store = configureStore();
@@ -32,6 +24,19 @@ store.dispatch(
     note: "Electricity is expensive!"
   })
 );
+
+store.dispatch(
+  addExpense({
+    description: "Rent bill",
+    amount: 320000,
+    createdAt: 0,
+    note: "Rent sucks!"
+  })
+);
+
+// setTimeout(() => {
+//   store.dispatch(filterByText("elec"));
+// }, 4000);
 
 // store.dispatch(setStartDate(0));
 // store.dispatch(setEndDate(400));

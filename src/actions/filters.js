@@ -2,6 +2,7 @@ export const applyFilter = filter => ({
   type: "APPLY_FILTER",
   filter: filter
 });
+
 export const sortBy = value => applyFilter({ sortBy: value });
 export const sortByDate = () => applyFilter({ sortBy: "date" });
 export const sortByAmount = () => applyFilter({ sortBy: "amount" });

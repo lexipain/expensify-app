@@ -1,3 +1,4 @@
+import moment from "moment";
 export default (expenses, { text, startDate, endDate, sortBy }) => {
   return expenses
     .filter(expense => {
@@ -6,14 +7,14 @@ export default (expenses, { text, startDate, endDate, sortBy }) => {
           return false;
         }
       }
-      if (typeof startDate === "number") {
-        if (expense.createdAt < startDate) {
+      if (startDate) {
+        if (moment(expense.createdAt).isBefore(startDate, "day")) {
           return false;
         }
       }
 
-      if (typeof endDate === "number") {
-        if (expense.createdAt > endDate) {
+      if (endDate) {
+        if (moment(expense.createdAt).isAfter(endDate, "day")) {
           return false;
         }
       }
